@@ -9,7 +9,12 @@ public interface ContentDao {
 	
 	void delete(int id);
 	
+	void update(ContentModel content);
+	
+	ContentModel getbyid(int id);
+	
 	List<ContentModel> getallbyid(int id) ;
 	
 	int getTotalContent();
+	List<ContentModel> search(int id, String title);
 }

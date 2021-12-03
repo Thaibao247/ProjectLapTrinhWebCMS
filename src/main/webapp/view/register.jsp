@@ -43,12 +43,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
-                    <div class="login-panel panel panel-default">
+                    <div class="login-panel panel panel-default" style="margin-top:50%;">
                         <div class="panel-heading">
                             <h3 class="panel-title">Register</h3>
                         </div>
                         <div class="panel-body">
-                            <form role="form"  id="form-1" >
+                            <form role="form"  id="form-1" method="post" action="<%=request.getContextPath()%>/register" >
+                               	    <c:if test="${alert != null}">
+										<p class="alert alert-danger">${alert}</p>
+									</c:if>
                                 <fieldset>
                                    <div class="form-group" >                                       
                                         <input id="username" class="form-control" placeholder="User name" name="username" type="text" autofocus>

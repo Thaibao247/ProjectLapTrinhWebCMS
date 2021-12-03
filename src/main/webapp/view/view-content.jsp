@@ -19,12 +19,29 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-
-	
-	 <div id="page-wrapper">
-	 <form class="content" action="${pageContext.request.contextPath}/content"
-									method="post">
-                <div class="container-fluid">
+	 <style>
+			.preloading{
+				display:none;
+			}
+			.load{
+				width:100%;
+				height:100%;
+				display:block;
+				overflow:hidden;
+				position:fixed;
+				z-index:900;
+				background:#fff;
+				padding:4%;
+				
+			}
+			.load h1{
+			font-size:24px;
+			}
+	  </style>
+	 <div class="" id="page-wrapper">
+	 <div class="load"><h1>Loading</h1></div>
+                <div id="viewcontent" class="preloading">
+                	<div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">View Content</h1>
@@ -32,7 +49,7 @@
                         <!-- /.col-lg-12 -->
                     </div>
                     <!-- /.row -->
-                    
+                    <form action="content" method="get">
                     <div class="row">
                         <div class="col-lg-15">
                             <div class="panel panel-default">
@@ -53,14 +70,14 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                              <c:forEach var="row" items="${list}">
+                                              <c:forEach var="row" items="${listcontent}">
                                               	<tr>
                                               		<td>${row.cid }</td>
                                               		<td>${row.tittle}</td>
                                               		<td>${row.brief1}</td>
                                               		<td>${row.createdate1}</td>
-                                              		<td><a href="showeditcontent?nid=<c:out value='${row.cid}'/>">Sửa</a>
-						   						  &nbsp; <a href="deletecontent?nid=<c:out value='${row.cid}'/>">Xóa</a></td>
+                                              		<td><a href="showeditcontent?cid=<c:out value='${row.cid}'/>">Edit</a>
+						   						  &nbsp; <a href="deletecontent?cid=<c:out value='${row.cid}'/>">Delete</a></td>
                                               		
                                               	</tr>
                                               
@@ -81,10 +98,11 @@
                    
                      
                     </div>
-                   
+                     </form>
                 </div>
                 <!-- /.container-fluid -->
-                </form>
+             
+                </div>
             </div>
               <!-- jQuery -->
         <script src="<c:url value ="/style/js/jquery.min.js"/>"></script>
@@ -104,10 +122,16 @@
 
         <!-- Page-Level Demo Scripts - Tables - Use for reference -->
         <script>
+        $(window).on('load', function(event){
+        	
+        	$('.load').delay(5000).fadeOut('fast');
+        	$('#viewcontent').removeClass('preloading');
+        });
             $(document).ready(function() {
                 $('#dataTables-example').DataTable({
                         responsive: true
                 });
+               
             });
             
         </script>

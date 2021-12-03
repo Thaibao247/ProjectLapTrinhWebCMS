@@ -55,7 +55,7 @@ public class AddContentController extends HttpServlet{
 		contentmodel.setUpdatetime1(formatter.format(date));
 		contentmodel.setUserid(users.getId());
 		contentdao.insert(contentmodel);
-		resp.sendRedirect("home.tiles");
+		resp.sendRedirect("content");
 	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

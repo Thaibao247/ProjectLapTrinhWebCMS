@@ -11,7 +11,15 @@ public class ContentModel {
 	private String updatetime1;
 	private int userid;
 	
-	
+	public ContentModel(int cid,String tittle, String brief1, String content1, String updatetime1) {
+		super();
+		this.cid = cid;
+		this.tittle = tittle;
+		this.brief1 = brief1;
+		this.content1 = content1;
+		this.updatetime1 = updatetime1;
+	}
+
 
 	
 

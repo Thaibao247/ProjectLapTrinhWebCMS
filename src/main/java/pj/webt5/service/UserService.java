@@ -7,6 +7,8 @@ public interface UserService {
 	
 	void delete(int id);
 	
+	void update(UserModel user);
+	
 	UserModel login(String email, String password);
 	
 	UserModel getbyid(int id);

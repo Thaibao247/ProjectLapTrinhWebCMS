@@ -39,4 +39,22 @@ public class ContentServiceImpl implements ContentService{
 	public int getTotalContent() {
 		// TODO Auto-generated method stub
 		return contentdao.getTotalContent();
-	}}
+	}
+
+	@Override
+	public void update(ContentModel content) {
+		contentdao.update(content);	
+	}
+
+	@Override
+	public ContentModel getbyid(int id) {
+		// TODO Auto-generated method stub
+		return contentdao.getbyid(id);
+	}
+
+	@Override
+	public List<ContentModel> search(int id, String title) {
+		return contentdao.search(id, title);
+	}
+
+}

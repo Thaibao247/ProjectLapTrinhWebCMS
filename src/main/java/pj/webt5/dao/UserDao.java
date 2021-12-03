@@ -7,6 +7,8 @@ public interface UserDao {
 	
 	void delete(int id);
 	
+	void update(UserModel user);
+	
 	UserModel getEmail(String email);
 	
 	UserModel getbyid(int id);

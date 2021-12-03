@@ -39,22 +39,27 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-6">
-									<form role="form">
+									<form role="form" method="post" action="${pageContext.request.contextPath}/savecontent" name="editcontent" id="editcontent">
+									
+									
+									   <c:if test="${content != null}">
+                           				  <input type="hidden" name="uid" value="<c:out value='${content.cid}' />" />
+                     				   </c:if>
 										<div class="form-group">
-											<label>Title</label> <input class="form-control"
-												placeholder="Enter the title">
+											<label>Title</label> <input class="form-control" name="title"
+												placeholder="Enter the title"  value="<c:out value='${content.tittle}' />">
 										</div>
 										<div class="form-group">
 											<label>Brief</label>
-											<textarea class="form-control" rows="3"></textarea>
+											<textarea class="form-control" rows="3" name="brief" ><c:out value='${content.brief1}' /> </textarea>
 										</div>
 										<div class="form-group">
 											<label>Content</label>
-											<textarea class="form-control" rows="8"></textarea>
+											<textarea class="form-control" rows="8" name="content" ><c:out value='${content.content1}' /></textarea>
 										</div>
 										<button type="submit" class="btn btn-default">Submit
 											Button</button>
-										<button type="reset" class="btn btn-default">Reset
+										<button type="reset" class="btn btn-default" onClick="reloadThePage()">Reset
 											Button</button>
 									</form>
 								</div>
@@ -67,7 +72,7 @@
 					</div>
 					<!-- /.panel -->
 				</div>
-				<!-- /.col-lg-12 -->
+<!-- /.col-lg-12 -->
 			</div>
 			<!-- /.row -->
 		</div>
@@ -88,11 +93,15 @@
 		  <script src="<c:url value ="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"/>"></script>
 	<script src="<c:url value ="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"/>" type="text/javascript"></script>
 	  
-	    
+	    <script>
+function reloadThePage(){
+    window.location.reload();
+} 
+</script>
 	  
         <script>
         $().ready(function() {
-        	$("#addcontent").validate({
+        	$("#editcontent").validate({
         		onfocusout: false,
         		onkeyup: false,
         		onclick: false,
@@ -134,4 +143,3 @@
         	
         });
         </script>
-		

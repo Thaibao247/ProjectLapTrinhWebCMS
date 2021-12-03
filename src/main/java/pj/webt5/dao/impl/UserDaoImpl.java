@@ -14,8 +14,23 @@ public class UserDaoImpl extends DBConnection implements UserDao{
 	public ResultSet rs = null;
 	@Override
 	public void insert(UserModel user) {
-		// TODO Auto-generated method stub
-		
+		String sql ="INSERT INTO `cmsnhom5`.`member` (`firstname`, `lastname`, `username`, `password`, `phone`, `email`, `description`, `createddate`, `updatetime`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		try {
+			conn = DBConnection.getConnect();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, user.getFirstname());
+			ps.setString(2, user.getLastname());
+			ps.setString(3, user.getUsername());
+			ps.setString(4, user.getPassword());
+			ps.setString(5,user.getPhone());
+			ps.setString(6, user.getEmail());
+			ps.setString(7, user.getDescription());
+			ps.setString(8, user.getCreatedate());
+			ps.setString(9, user.getUpdatetime());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -44,8 +59,8 @@ public class UserDaoImpl extends DBConnection implements UserDao{
 				user.setPhone(rs.getString("phone"));
 				user.setEmail(rs.getString("email"));
 				user.setDescription(rs.getString("description"));
-				user.setCreatedate(rs.getDate("createddate"));
-				user.setUpdatetime(rs.getDate("updatetime"));
+				user.setCreatedate(rs.getString("createddate"));
+				user.setUpdatetime(rs.getString("updatetime"));
 				return user;
 			}
 		} catch (Exception e) {
@@ -57,7 +72,6 @@ public class UserDaoImpl extends DBConnection implements UserDao{
 	@Override
 	public UserModel getEmail(String email) {
 		String sql = "SELECT * FROM cmsnhom5.member where email = ?;";
-		long time = System.currentTimeMillis();
 		try {
 			new DBConnection();
 			conn = DBConnection.getConnect();
@@ -75,8 +89,8 @@ public class UserDaoImpl extends DBConnection implements UserDao{
 				user.setPhone(rs.getString("phone"));
 				user.setEmail(rs.getString("email"));
 				user.setDescription(rs.getString("description"));
-				user.setCreatedate(new java.sql.Date(time));
-				user.setUpdatetime(new java.sql.Date(time));
+				user.setCreatedate("createddate");
+				user.setUpdatetime("updatetime");
 				return user;
 			}
 		} catch (Exception e) {
@@ -103,6 +117,25 @@ public class UserDaoImpl extends DBConnection implements UserDao{
 			// TODO: handle exception
 		}
 		return -1;
+	}
+
+	@Override
+	public void update(UserModel user) {
+		String sql = "UPDATE `cmsnhom5`.`member` SET `firstname` = ?, `lastname` = ?, `phone` = ?, `description` = ?, `updatetime` = ? WHERE (`id` = ?);";
+		try {
+			new DBConnection();
+			conn = DBConnection.getConnect();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, user.getFirstname());
+			ps.setString(2, user.getLastname());
+			ps.setString(3, user.getPhone());
+			ps.setString(4, user.getDescription());
+			ps.setString(5, user.getUpdatetime());
+			ps.setInt(6, user.getId());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

@@ -9,9 +9,14 @@ public interface ContentService {
 	
 	void delete(int id);
 	
+	void update(ContentModel content);
 	
+	ContentModel getbyid(int id);
 	int getTotalContent();
 	List<ContentModel> getallbyid(int id); 
 	
 	List<ContentModel> search(String keyword);
+	
+	List<ContentModel> search(int id, String title);
+	
 }

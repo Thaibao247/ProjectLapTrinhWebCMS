@@ -18,16 +18,20 @@
 	<div class="sidebar-nav navbar-collapse">
 		<ul class="nav" id="side-menu">
 			<li class="sidebar-search">
+			<form action="search" method="POST">
 				<div class="input-group custom-search-form">
-					<input type="text" class="form-control" placeholder="Search...">
+					<input type="text" class="form-control" placeholder="Search..." name="title">
 					<span class="input-group-btn">
 						<button class="btn btn-primary" type="button">
 							<i class="fa fa-search"></i>
 						</button>
 					</span>
 				</div> <!-- /input-group -->
+
+			</form>
+				
 			</li>
-			<li><a href="viewcontent.tiles"><i class="fa fa-table fa-fw"></i>
+			<li><a href="content"><i class="fa fa-table fa-fw"></i>
 					View Contents</a></li>
 			<li><a href="addcontent.tiles"><i class="fa fa-edit fa-fw"></i> Form
 					content</a></li>

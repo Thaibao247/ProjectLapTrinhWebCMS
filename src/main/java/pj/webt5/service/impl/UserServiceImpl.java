@@ -39,6 +39,12 @@ public class UserServiceImpl implements UserService{
 		return userdao.getUserid(email, password);
 	}
 
+	@Override
+	public void update(UserModel user) {
+		userdao.update(user);
+		
+	}
+
 
 
 }

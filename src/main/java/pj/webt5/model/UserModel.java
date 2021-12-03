@@ -1,6 +1,5 @@
 package pj.webt5.model;
 
-import java.util.Date;
 
 public class UserModel {
 	private int id;
@@ -11,8 +10,8 @@ public class UserModel {
 	private String phone;
 	private String email;
 	private String description;
-	private Date createdate;
-	private Date updatetime;
+	private String createdate;
+	private String updatetime;
 	public int getId() {
 		return id;
 	}
@@ -61,20 +60,20 @@ public class UserModel {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Date getCreatedate() {
+	public String getCreatedate() {
 		return createdate;
 	}
-	public void setCreatedate(Date createdate) {
+	public void setCreatedate(String createdate) {
 		this.createdate = createdate;
 	}
-	public Date getUpdatetime() {
+	public String getUpdatetime() {
 		return updatetime;
 	}
-	public void setUpdatetime(Date updatetime) {
+	public void setUpdatetime(String updatetime) {
 		this.updatetime = updatetime;
 	}
 	public UserModel(int id, String firstname, String lastname, String username, String password, String phone,
-			String email, String description, Date createdate, Date updatetime) {
+			String email, String description, String createdate, String updatetime) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
@@ -87,8 +86,11 @@ public class UserModel {
 		this.createdate = createdate;
 		this.updatetime = updatetime;
 	}
+	public UserModel() {
+		super();
+	}
 	public UserModel(String firstname, String lastname, String username, String password, String phone, String email,
-			String description, Date createdate, Date updatetime) {
+			String description, String createdate, String updatetime) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -100,14 +102,14 @@ public class UserModel {
 		this.createdate = createdate;
 		this.updatetime = updatetime;
 	}
-	@Override
-	public String toString() {
-		return "UserModel [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", username=" + username
-				+ ", password=" + password + ", phone=" + phone + ", email=" + email + ", description=" + description
-				+ ", createdate=" + createdate + ", updatetime=" + updatetime + "]";
-	}
-	public UserModel() {
+	public UserModel(int id, String firstname, String lastname, String phone, String description, String updatetime) {
 		super();
+		this.id = id;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.phone = phone;
+		this.description = description;
+		this.updatetime = updatetime;
 	}
 	
 	

@@ -32,7 +32,11 @@
 		label.error{
 			color: red;
 		}
+		.container{
+			margin-top:10%;
+		}
 	    </style>
+	    
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -59,7 +63,7 @@
 							<fieldset>
 								<div class="form-group">
 									<input class="form-control" placeholder="E-Mail" name ="email" id = "email"
-										 type="email" autofocus>
+										 type="email" value="" autofocus>
 										
 								</div>
 								<div class="form-group">

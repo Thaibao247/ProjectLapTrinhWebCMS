@@ -24,10 +24,6 @@ public class ViewContentController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("viewcontent.tiles").forward(req, resp);
-	}
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html;charset=UTF-8");
 		req.setCharacterEncoding("UTF-8");
 		ContentService service = new ContentServiceImpl();
@@ -35,8 +31,12 @@ public class ViewContentController extends HttpServlet{
 		HttpSession session = req.getSession();
 		int authorId=(int)session.getAttribute("id");
 		List<ContentModel> list  = service.getallbyid(authorId);
-		req.setAttribute("list", list);
+		req.setAttribute("listcontent", list);
 		RequestDispatcher rq = req.getRequestDispatcher("viewcontent.tiles");
 		rq.forward(req, resp);
+	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
 	}
 }

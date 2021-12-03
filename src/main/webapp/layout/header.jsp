@@ -24,7 +24,7 @@
         <![endif]-->
 
 
-	<div id="header">
+	<div id="header" style="position:fixed;z-index:10000;">
 
 		<!-- Navigation -->
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -46,8 +46,10 @@
 						<b class="caret"></b>
 				</a>
 					<ul class="dropdown-menu dropdown-user">
-						<li><a href="editprofile.tiles"><i class="fa fa-user fa-fw"></i>
+					<c:if test="${sessionScope.account != null}">
+						<li><a href="${pageContext.request.contextPath}/editprofile?usid=<c:url value="${account.id}"/>"><i class="fa fa-user fa-fw"></i>
 								User Profile</a></li>
+					</c:if>
 						<li class="divider"></li>
 						<li><a href="<c:url value="/view/login.jsp"/>"><i class="fa fa-sign-out fa-fw"></i>
 								Logout</a></li>
