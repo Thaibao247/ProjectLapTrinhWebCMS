@@ -1,3 +1,5 @@
 # webprojectT5
-project web môn công nghệ phần mềm   
+project LẬP TRÌNH WEB   
+CMS quản lý bài viết   
+
 
